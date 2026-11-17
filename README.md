@@ -58,13 +58,16 @@ Program dijalankan dari `main.py`, menampilkan menu, menjalankan fitur yang dipi
 
 ## Rencana Struktur File
 ```
-.
-├── main.py          # Titik masuk program: menu konsol dan pemanggilan method
-├── kamar.py         # Class Kamar (atribut private, getter/setter dengan validasi)
-├── penghuni.py      # Class Penghuni
-├── penyewaan.py     # Class Penyewaan (menghubungkan Penghuni dan Kamar)
-├── pemilik_kost.py  # Class PemilikKost (daftar kamar dan riwayat penyewaan)
-└── validasi.py      # Fungsi validasi: nomor telepon, harga sewa positif, format tanggal
+pbo-7/
+│
+├── main.py        
+└── models/        <-- Folder khusus kelas-kelas
+    ├── kamar.py         # Class Kamar (atribut private, getter/setter dengan validasi)
+    ├── penghuni.py      # Class Penghuni
+    ├── penyewaan.py     # Class Penyewaan (menghubungkan Penghuni dan Kamar)
+    ├── pemilik_kost.py  # Class PemilikKost (daftar kamar dan riwayat penyewaan)
+    └── validasi.py      # Fungsi validasi: nomor telepon, harga sewa positif, format tanggal
+
 ```
 
 ## Tim
