@@ -77,6 +77,6 @@ pbo-7/
 | Ahmad Alfaro Edro Ramadhan    | F1E125063  |
 | Meisyta Marsha Winola         | F1E125025  |
 | Devy Melisa Putri             | F1E125075  |
-| Muhammad Faisol Hakim         | F1E125027  |
+| Muhammad Faishol Hakim        | F1E125027  |
 
 **Dosen Pengampu:** Edi Saputra, S.T., M.Sc.; Pariyadi, S.Kom., M.Kom.; Hamzah Alghifari, M.Kom.; Muhammad Damas Fatih, S.Kom., M.Kom.
