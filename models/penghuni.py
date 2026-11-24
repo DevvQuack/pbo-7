@@ -7,61 +7,61 @@ if TYPE_CHECKING:
     from .kamar import Kamar
     from .penyewaan import Penyewaan
 
-class Penghuni:
+class Penghuni: #SRP
     def __init__(self, id_penghuni: str, nama: str, no_telpon: str) -> None:
         self.__id_penghuni = teks_wajib(id_penghuni, "ID penghuni").upper()
         self.__nama = teks_wajib(nama, "Nama penghuni")
         self.__no_telpon = nomor_telepon_valid(no_telpon)
         self.__penyewaan_aktif: Penyewaan | None = None
 
-    @property
+    @property #LSP
     def id_penghuni(self) -> str:
         return self.__id_penghuni
 
-    @property
+    @property #SRP
     def nama(self) -> str:
         return self.__nama
 
-    @nama.setter
+    @nama.setter #SRP dan OCP
     def nama(self, nilai: str) -> None:
         self.__nama = teks_wajib(nilai, "Nama penghuni")
 
-    @property
+    @property #SRP
     def no_telpon(self) -> str:
         return self.__no_telpon
 
-    @no_telpon.setter
+    @no_telpon.setter # SRP dan OCP
     def no_telpon(self, nilai: str) -> None:
         self.__no_telpon = nomor_telepon_valid(nilai)
 
-    @property
+    @property #LSP
     def penyewaan_aktif(self) -> Penyewaan | None:
         return self.__penyewaan_aktif
 
-    def informasi(self) -> str:
+    def informasi(self) -> str: #SRP
         status = "Sedang menyewa" if self.penyewaan_aktif else "Belum menyewa"
         return f"{self.id_penghuni} - {self.nama} ({self.no_telpon}) [{status}]"
 
-    def sewa_kamar(self, kamar: Kamar, tanggal_masuk: str | date) -> Penyewaan:
+    def sewa_kamar(self, kamar: Kamar, tanggal_masuk: str | date) -> Penyewaan: #OCP
         from .penyewaan import Penyewaan
 
         transaksi = Penyewaan(self, kamar, tanggal_masuk)
         transaksi.proses_penyewaan()
         return transaksi
 
-    def keluar_kamar(self, tanggal_keluar: str | date) -> Penyewaan:
+    def keluar_kamar(self, tanggal_keluar: str | date) -> Penyewaan: #SRP
         if self.__penyewaan_aktif is None:
             raise ValueError(f"Penghuni {self.id_penghuni} tidak memiliki sewa aktif.")
         transaksi = self.__penyewaan_aktif
         transaksi.proses_pengakhiran(tanggal_keluar)
         return transaksi
 
-    def _pasang_penyewaan(self, transaksi: Penyewaan) -> None:
+    def _pasang_penyewaan(self, transaksi: Penyewaan) -> None: #ISP
         if self.__penyewaan_aktif is not None:
             raise ValueError(f"Penghuni {self.id_penghuni} masih menyewa kamar lain.")
         self.__penyewaan_aktif = transaksi
 
-    def _lepas_penyewaan(self, transaksi: Penyewaan) -> None:
+    def _lepas_penyewaan(self, transaksi: Penyewaan) -> None: #ISP
         if self.__penyewaan_aktif is not transaksi:
             raise ValueError("Relasi penghuni dan penyewaan tidak konsisten.")
         self.__penyewaan_aktif = None
