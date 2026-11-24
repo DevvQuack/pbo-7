@@ -44,6 +44,7 @@ class Penyewaan:
             raise ValueError(f"Kamar {self.kamar.nomor_kamar} tidak tersedia.")
         if self.penghuni.penyewaan_aktif is not None:
             raise ValueError(f"Penghuni {self.penghuni.id_penghuni} masih menyewa.")
+        # Memastikan kedua kondisi valid sebelum status diubah.
         self.kamar.tempati()
         self.penghuni._pasang_penyewaan(self)
         self.__sudah_dimulai = True
@@ -56,7 +57,6 @@ class Penyewaan:
             raise ValueError("Tanggal keluar tidak boleh lebih awal dari tanggal masuk.")
         if self.kamar.tersedia() or self.penghuni.penyewaan_aktif is not self:
             raise ValueError("Status kamar/penghuni tidak konsisten.")
-          
         self.kamar.kosongkan()
         self.penghuni._lepas_penyewaan(self)
         self.__tanggal_keluar = keluar
