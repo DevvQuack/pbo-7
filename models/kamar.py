@@ -1,4 +1,4 @@
-from validasi import harga_valid, teks_wajib
+from .validasi import harga_valid, teks_wajib
 
 
 class Kamar:
