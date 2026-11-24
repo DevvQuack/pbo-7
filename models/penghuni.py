@@ -1,7 +1,7 @@
 from __future__ import annotations
 from datetime import date
 from typing import TYPE_CHECKING
-from validasi import nomor_telepon_valid, teks_wajib
+from .validasi import nomor_telepon_valid, teks_wajib
 
 if TYPE_CHECKING:
     from .kamar import Kamar
