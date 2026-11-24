@@ -2,7 +2,7 @@ from __future__ import annotations
 from datetime import date
 from .kamar import Kamar
 from .penghuni import Penghuni
-from validasi import tanggal_valid
+from .validasi import tanggal_valid
 
 
 class Penyewaan:
