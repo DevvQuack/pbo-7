@@ -1,6 +1,5 @@
 from .validasi import harga_valid, teks_wajib
 
-
 class Kamar:
     def __init__(self, nomor_kamar: str, tipe: str, harga_sewa: int) -> None:
         # Enkapsulasi: atribut private dan validasi saat objek dibuat.
@@ -44,7 +43,7 @@ class Kamar:
     def kosongkan(self) -> None:
         if self.tersedia():
             raise ValueError(f"Kamar {self.nomor_kamar} sudah kosong.")
-        self.__status = "tersedia"
+            self.__status = "tersedia"
 
     def __str__(self) -> str:
         return f"Kamar {self.nomor_kamar} ({self.tipe}) - {self.status}"
