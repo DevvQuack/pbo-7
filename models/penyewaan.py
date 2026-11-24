@@ -4,7 +4,6 @@ from .kamar import Kamar
 from .penghuni import Penghuni
 from .validasi import tanggal_valid
 
-
 class Penyewaan:
     def __init__(
         self, penghuni: Penghuni, kamar: Kamar, tanggal_masuk: str | date
