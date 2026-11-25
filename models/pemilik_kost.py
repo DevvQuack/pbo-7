@@ -1,4 +1,4 @@
-from validasi import nomor_telepon_valid, teks_wajib
+from .validasi import nomor_telepon_valid, teks_wajib
 
 
 class PemilikKost:
