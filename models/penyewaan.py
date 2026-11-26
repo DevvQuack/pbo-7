@@ -1,21 +1,28 @@
+# Materi PBO: class, enkapsulasi, asosiasi antarobjek, abstraksi, SRP.
+"""Class Penyewaan: hubungan penghuni-kamar serta proses mulai/akhir sewa."""
+
 from __future__ import annotations
 from datetime import date
 from .kamar import Kamar
 from .penghuni import Penghuni
 from .validasi import tanggal_valid
 
+
+# [CLASS, SRP] Menangani siklus transaksi penyewaan.
 class Penyewaan:
     def __init__(
         self, penghuni: Penghuni, kamar: Kamar, tanggal_masuk: str | date
     ) -> None:
         if not isinstance(penghuni, Penghuni) or not isinstance(kamar, Kamar):
             raise TypeError("Penyewaan membutuhkan objek Penghuni dan Kamar.")
+        # [ASOSIASI, ENKAPSULASI] Menyimpan referensi objek, bukan menyalinnya.
         self.__penghuni = penghuni
         self.__kamar = kamar
         self.__tanggal_masuk = tanggal_valid(tanggal_masuk)
         self.__tanggal_keluar: date | None = None
         self.__sudah_dimulai = False
 
+    # [ENKAPSULASI] Getter untuk referensi penghuni.
     @property
     def penghuni(self) -> Penghuni:
         return self.__penghuni
@@ -32,10 +39,12 @@ class Penyewaan:
     def tanggal_keluar(self) -> date | None:
         return self.__tanggal_keluar
 
+    # [ABSTRAKSI] Menentukan status transaksi dari keadaan internal.
     @property
     def aktif(self) -> bool:
         return self.__sudah_dimulai and self.__tanggal_keluar is None
 
+    # [ABSTRAKSI] Menyembunyikan detail validasi dan perubahan objek.
     def proses_penyewaan(self) -> None:
         if self.__sudah_dimulai:
             raise ValueError("Transaksi sudah pernah diproses.")
@@ -43,11 +52,13 @@ class Penyewaan:
             raise ValueError(f"Kamar {self.kamar.nomor_kamar} tidak tersedia.")
         if self.penghuni.penyewaan_aktif is not None:
             raise ValueError(f"Penghuni {self.penghuni.id_penghuni} masih menyewa.")
-        # Memastikan kedua kondisi valid sebelum status diubah.
+        # Pastikan kedua kondisi valid sebelum status diubah.
+        # [INTERAKSI OBJEK] Transaksi memanggil perilaku objek Kamar dan Penghuni.
         self.kamar.tempati()
         self.penghuni._pasang_penyewaan(self)
         self.__sudah_dimulai = True
 
+    # [INTERAKSI OBJEK] Mengakhiri transaksi dan memulihkan relasi/status.
     def proses_pengakhiran(self, tanggal_keluar: str | date) -> None:
         keluar = tanggal_valid(tanggal_keluar)
         if not self.aktif:
