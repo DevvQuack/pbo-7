@@ -1,11 +1,8 @@
 import os
 
-
 # [CLASS DAN SRP]
-# Class Database bertanggung jawab atas konfigurasi
-# dan pembuatan koneksi ke database MySQL.
+# Class Database bertanggung jawab atas konfigurasi dan pembuatan koneksi ke database MySQL.
 class Database:
-
     # [CONSTRUCTOR]
     def __init__(self):
 
@@ -18,11 +15,10 @@ class Database:
         self.__database = os.getenv('DB_NAME', 'db_kost')
 
     # [ABSTRAKSI]
-    # Pengguna class cukup memanggil method koneksi()
-    # tanpa mengetahui detail konfigurasi MySQL.
+    # Pengguna class cukup memanggil method koneksi() tanpa mengetahui detail konfigurasi MySQL.
     def koneksi(self):
         import mysql.connector
-
+        
         return mysql.connector.connect(
             host=self.__host,
             port=self.__port,
