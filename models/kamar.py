@@ -1,8 +1,4 @@
-# Materi PBO: class, constructor, atribut instance, enkapsulasi, abstraksi, SRP.
-"""Class Kamar: menyimpan data kamar dan menjaga status tersedia/terisi."""
-
 from .validasi import harga_valid, teks_wajib
-
 
 # [CLASS, SRP] Mengelola data dan status kamar, bukan SQL atau HTML.
 class Kamar:
