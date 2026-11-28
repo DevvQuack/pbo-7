@@ -72,11 +72,11 @@ pbo-7/
 
 ## Tim
 **Kelompok 7** (Program Studi S1 Sistem Informasi, Universitas Jambi)
-| Nama                          | NIM        |
-|-------------------------------|------------|
-| Ahmad Alfaro Edro Ramadhan    | F1E125063  |
-| Meisyta Marsha Winola         | F1E125025  |
-| Devy Melisa Putri             | F1E125075  |
-| Muhammad Faishol Hakim        | F1E125027  |
+| Nama                          | NIM        | Pembagian Tugas                                   |
+|-------------------------------|------------|---------------------------------------------------|
+| Ahmad Alfaro Edro Ramadhan    | F1E125063  | main.py, pemilik_kost.py, aplikasi.py, laporan.py |
+| Meisyta Marsha Winola         | F1E125025  | kamar.py, penghuni.py, penyewaan.py, validasi.py  |
+| Devy Melisa Putri             | F1E125075  | index.html, style.css, script.js                  |
+| Muhammad Faishol Hakim        | F1E125027  | koneksi.py, schema.sql, repository.py             |
 
 **Dosen Pengampu:** Edi Saputra, S.T., M.Sc.; Pariyadi, S.Kom., M.Kom.; Hamzah Alghifari, M.Kom.; Muhammad Damas Fatih, S.Kom., M.Kom.
