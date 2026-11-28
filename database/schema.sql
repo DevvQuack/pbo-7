@@ -1,5 +1,3 @@
--- Materi database: DDL, primary key, foreign key, CHECK, UNIQUE.
--- Bukan OOP: SQL deklaratif melengkapi validasi model dan integritas transaksi.
 CREATE DATABASE IF NOT EXISTS db_kost CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE db_kost;
 
